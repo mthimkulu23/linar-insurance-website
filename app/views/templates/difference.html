@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}The Linar Difference – Linar Insurance{% endblock %}
+
+{% block content %}
+
+<!-- ===== THE LINAR DIFFERENCE SECTION ===== -->
+<section class="difference-section py-5 bg-dark-navy position-relative overflow-hidden" data-scroll="reveal">
+
+  <!-- Large decorative blue circle -->
+  <div class="difference-circle-bg" aria-hidden="true"></div>
+
+  <div class="container position-relative z-1 py-5">
+
+    <!-- Section header -->
+    <div class="text-center text-white mb-5" data-scroll="reveal">
+      <span class="section-badge mb-3 d-inline-block">THE LINAR DIFFERENCE</span>
+      <h2 class="fw-800 display-5">How we aim to make a difference</h2>
+      <p class="text-white-50 mt-3 mx-auto" style="max-width:580px;">
+        At Linar, we believe insurance is more than a policy — it's a promise. Here's how we live that promise every day.
+      </p>
+    </div>
+
+    <!-- Three cards -->
+    <div class="row g-4 justify-content-center">
+
+      <!-- Card 1: We lead with love -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="100">
+        <div class="difference-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="difference-card-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-heart-fill" style="color:#E84E1B; font-size:2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">We lead with love</h4>
+          <p class="text-white-50 mb-0">
+            Every client interaction is rooted in genuine care. We treat every person as family, with empathy and respect — because behind every policy is a real human story.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2: We promote inclusion -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="200">
+        <div class="difference-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="difference-card-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-mortarboard-fill" style="color:#1E3AE8; font-size:2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">We promote inclusion</h4>
+          <p class="text-white-50 mb-0">
+            We are committed to making insurance accessible to every South African, regardless of income or background. Financial security should not be a privilege.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3: We guide with excellence -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="300">
+        <div class="difference-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="difference-card-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-search" style="color:#1E3AE8; font-size:2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">We guide with excellence</h4>
+          <p class="text-white-50 mb-0">
+            Our team of experts provides clear, honest, and jargon-free guidance. We help you navigate your options so you can make the best decision for your future.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- end row -->
+
+    <!-- CTA -->
+    <div class="text-center mt-5" data-scroll="reveal" data-scroll-delay="400">
+      <a href="/get-a-quote" class="btn btn-coral rounded-pill px-5 py-3 fw-600 text-white">
+        Get A Quote Today
+      </a>
+    </div>
+
+  </div><!-- end container -->
+</section>
+
+{% endblock %}

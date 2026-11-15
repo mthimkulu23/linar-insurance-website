@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Values – Linar Insurance{% endblock %}
+
+{% block content %}
+
+<!-- ===== VALUES SECTION ===== -->
+<section class="values-section py-5 bg-dark-navy position-relative overflow-hidden" data-scroll="reveal">
+
+  <!-- Background decorative element -->
+  <div class="values-bg-shape" aria-hidden="true"></div>
+
+  <div class="container position-relative z-1 py-5">
+
+    <!-- Section header -->
+    <div class="text-center text-white mb-5" data-scroll="reveal">
+      <span class="section-badge mb-3 d-inline-block">OUR VALUES</span>
+      <h2 class="fw-800 display-5 mb-3">What we stand for</h2>
+      <p class="text-white-50 mx-auto" style="max-width:600px;">
+        Our values aren't just words on a page — they guide every decision we make and every client relationship we build.
+      </p>
+    </div>
+
+    <!-- Values grid -->
+    <div class="row g-4 justify-content-center">
+
+      <!-- Value 1 -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="100">
+        <div class="value-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="value-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-shield-heart-fill" style="color:#E84E1B; font-size:2.2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">Integrity</h4>
+          <p class="text-white-50 mb-0">
+            We act with honesty and transparency in all we do. Our clients trust us with their most important financial decisions, and we never take that lightly.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 2 -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="150">
+        <div class="value-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="value-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-people-fill" style="color:#1E3AE8; font-size:2.2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">Compassion</h4>
+          <p class="text-white-50 mb-0">
+            We understand that insurance touches the most vulnerable moments of life. We approach every situation with empathy, patience, and genuine care.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 3 -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="200">
+        <div class="value-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="value-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-lightbulb-fill" style="color:#E84E1B; font-size:2.2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">Innovation</h4>
+          <p class="text-white-50 mb-0">
+            The insurance landscape is evolving. We continuously improve our products, processes, and digital tools to stay ahead and serve you better.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 4 -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="250">
+        <div class="value-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="value-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-globe2" style="color:#1E3AE8; font-size:2.2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">Inclusion</h4>
+          <p class="text-white-50 mb-0">
+            Every South African deserves access to quality insurance — regardless of income, education, or background. Inclusion is not a goal; it's a commitment.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value 5 -->
+      <div class="col-lg-4 col-md-6" data-scroll="reveal" data-scroll-delay="300">
+        <div class="value-card h-100 p-4 rounded-4 text-white text-center">
+          <div class="value-icon mb-4 mx-auto d-flex align-items-center justify-content-center">
+            <i class="bi bi-award-fill" style="color:#E84E1B; font-size:2.2rem;"></i>
+          </div>
+          <h4 class="fw-700 mb-3">Excellence</h4>
+          <p class="text-white-50 mb-0">
+            We hold ourselves to the highest standards of service, professionalism, and product quality — because you deserve nothing less.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- end values grid -->
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-5" data-scroll="reveal" data-scroll-delay="400">
+      <p class="text-white-50 mb-4">Ready to experience insurance the Linar way?</p>
+      <a href="/get-a-quote" class="btn btn-coral rounded-pill px-5 py-3 fw-600 text-white me-3">
+        Get A Quote
+      </a>
+      <a href="/contact" class="btn btn-outline-light rounded-pill px-5 py-3 fw-600">
+        Contact Us
+      </a>
+    </div>
+
+  </div><!-- end container -->
+</section>
+
+{% endblock %}

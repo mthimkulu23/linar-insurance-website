@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Eligibility – Linar Insurance{% endblock %}
+
+{% block content %}
+
+<!-- ===== ELIGIBILITY SECTION ===== -->
+<section class="eligibility-section py-5 bg-dark-navy position-relative overflow-hidden" data-scroll="reveal">
+
+  <!-- Coral orange organic blob – right side -->
+  <div class="eligibility-blob" aria-hidden="true"></div>
+
+  <div class="container position-relative z-1 py-5">
+    <div class="row align-items-center g-5">
+
+      <!-- Left: Content -->
+      <div class="col-lg-6 col-md-12 text-white" data-scroll="reveal">
+
+        <!-- Badge -->
+        <span class="section-badge mb-4 d-inline-block">ELIGIBILITY</span>
+
+        <h2 class="fw-800 display-5 mb-3">Are you eligible for Linar cover?</h2>
+        <p class="text-white-50 mb-5">
+          To be eligible for cover, you must meet the following conditions at the start date:
+        </p>
+
+        <!-- Requirement rows -->
+        <div class="d-flex flex-column gap-4">
+
+          <!-- Requirement 1 -->
+          <div class="eligibility-row d-flex align-items-start gap-4" data-scroll="reveal" data-scroll-delay="100">
+            <span class="eligibility-check flex-shrink-0">
+              <i class="bi bi-check-lg text-white fw-800"></i>
+            </span>
+            <div>
+              <h5 class="fw-700 mb-1">Identity Document</h5>
+              <p class="text-white-50 mb-0">Have a South African Identity Document</p>
+            </div>
+          </div>
+
+          <!-- Requirement 2 -->
+          <div class="eligibility-row d-flex align-items-start gap-4" data-scroll="reveal" data-scroll-delay="200">
+            <span class="eligibility-check flex-shrink-0">
+              <i class="bi bi-check-lg text-white fw-800"></i>
+            </span>
+            <div>
+              <h5 class="fw-700 mb-1">In South Africa?</h5>
+              <p class="text-white-50 mb-0">Live within the borders of South Africa</p>
+            </div>
+          </div>
+
+          <!-- Requirement 3 -->
+          <div class="eligibility-row d-flex align-items-start gap-4" data-scroll="reveal" data-scroll-delay="300">
+            <span class="eligibility-check flex-shrink-0">
+              <i class="bi bi-check-lg text-white fw-800"></i>
+            </span>
+            <div>
+              <h5 class="fw-700 mb-1">Bank Account</h5>
+              <p class="text-white-50 mb-0">Have a South African bank account</p>
+            </div>
+          </div>
+
+        </div><!-- end requirements -->
+
+        <!-- CTA -->
+        <div class="mt-5 text-center text-lg-start" data-scroll="reveal" data-scroll-delay="400">
+          <a href="/contact" class="btn btn-outline-light rounded-pill px-5 py-3 fw-600">
+            Speak to a Linar consultant
+          </a>
+        </div>
+
+      </div><!-- end col left -->
+
+      <!-- Right: Image with organic blob bg -->
+      <div class="col-lg-6 col-md-12 d-flex justify-content-center" data-scroll="reveal" data-scroll-delay="150">
+        <div class="eligibility-image-wrapper position-relative">
+          <!-- Organic blob behind image -->
+          <div class="eligibility-image-blob" aria-hidden="true"></div>
+          <!-- Image -->
+          <div class="eligibility-photo rounded-4 overflow-hidden position-relative z-1">
+            <img
+              src="https://picsum.photos/seed/linar-eligibility/460/520"
+              alt="Linar Insurance eligibility"
+              class="img-fluid w-100 h-100 object-fit-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end row -->
+  </div><!-- end container -->
+</section>
+
+{% endblock %}

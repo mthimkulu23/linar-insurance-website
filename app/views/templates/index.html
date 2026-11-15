@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Linar – The Future of Insurance</title>
+<meta name="description" content="Linar Insurance – The heart of insurance in South Africa. Inclusive, compassionate, trustworthy cover for you and your family.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --u: 1px;
+  --ox: 0px;
+  --oy: 0px;
+  --base: #0a2186;
+  --a: #4a55c0;
+  --b: #a85a78;
+  --c: #f25c3b;
+  --r: #f25c3b;
+  --stage: #0a2186;
+  --glass: rgba(255, 255, 255, 0.16);
+  --glass-border: rgba(255, 255, 255, 0.32);
+  --card-glass: rgba(255, 255, 255, 0.14);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --glass: rgba(255, 255, 255, 0.16); }
+}
+:root[data-theme="dark"] { --glass: rgba(255, 255, 255, 0.16); }
+
+* { box-sizing: border-box; margin: 0; }
+body {
+  background: var(--base);
+  color: #fff;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.fx { position: fixed; pointer-events: none; }
+#base { inset: 0; background: var(--base); }
+.lg {
+  background: linear-gradient(90deg, var(--a) 0, var(--a) var(--ox), var(--b) calc(var(--ox) + 420*var(--u)), var(--c) calc(var(--ox) + 880*var(--u)));
+  background-attachment: fixed;
+}
+#lA { left: 0; top: 0; bottom: 0; width: calc(var(--ox) + 490*var(--u)); }
+#lB { border-radius: 50%; }
+#rC { border-radius: 50%; background: var(--r); }
+#stage {
+  border-radius: 50%;
+  background: var(--stage);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+}
+#ring {
+  border-radius: 50%;
+  border: calc(1.5*var(--u)) dashed rgba(255, 255, 255, 0.85);
+  animation: spin 80s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#photo { display: block; will-change: transform, opacity; }
+
+/* Floating Shield Badge on Mother & Daughter Photo (Screenshot 1) */
+#photoBadge {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: calc(14*var(--u));
+  padding: calc(10*var(--u)) calc(20*var(--u));
+  border-radius: max(14px, calc(18*var(--u)));
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  z-index: 4;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+#photoBadge .badge-icon {
+  width: max(34px, calc(46*var(--u)));
+  height: max(34px, calc(46*var(--u)));
+  background: #2563eb;
+  border-radius: max(10px, calc(12*var(--u)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+}
+#photoBadge .badge-icon svg {
+  width: max(18px, calc(24*var(--u)));
+  height: max(18px, calc(24*var(--u)));
+  color: #fff;
+}
+#photoBadge .badge-text {
+  display: flex;
+  flex-direction: column;
+}
+#photoBadge .badge-title {
+  font-weight: 700;
+  font-size: max(13px, calc(17*var(--u)));
+  color: #fff;
+  line-height: 1.25;
+}
+#photoBadge .badge-sub {
+  font-weight: 400;
+  font-size: max(11px, calc(14*var(--u)));
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* Floating Glassmorphism Pill Navbar (Screenshot 1) */
+nav {
+  position: fixed;
+  top: calc(20px + env(safe-area-inset-top, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(1220*var(--u));
+  max-width: 94vw;
+  z-index: 50;
+  height: max(58px, calc(84*var(--u)));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 calc(28*var(--u)) 0 calc(36*var(--u));
+  border: 1px solid var(--glass-border);
+  border-radius: max(14px, calc(20*var(--u)));
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: calc(12*var(--u));
+  text-decoration: none;
+  color: #fff;
+}
+.brand svg {
+  width: max(38px, calc(52*var(--u)));
+  height: auto;
+}
+.brand b {
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: max(20px, calc(30*var(--u)));
+  color: #fff;
+}
+nav ul {
+  display: flex;
+  gap: calc(34*var(--u));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+nav ul li a {
+  font-size: max(14px, calc(17*var(--u)));
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ffffff;
+  font-weight: 700;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: calc(14*var(--u));
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(12*var(--u));
+  border-radius: max(10px, calc(14*var(--u)));
+  padding: 0 calc(24*var(--u));
+  height: max(44px, calc(56*var(--u)));
+  font-weight: 700;
+  font-size: max(13px, calc(17*var(--u)));
+  text-decoration: none;
+  color: #111;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+.btn.o {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+}
+.btn.o:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.btn svg {
+  width: calc(20*var(--u));
+  min-width: 16px;
+  height: auto;
+}
+
+/* Mobile Nav Toggle */
+.nav-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px;
+}
+.nav-toggle-btn svg { width: 28px; height: 28px; }
+
+/* Chapter Layout */
+.ch {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 calc(var(--ox) + 158*var(--u));
+  position: relative;
+  z-index: 3;
+}
+.ch > div {
+  max-width: calc(640*var(--u));
+  will-change: transform, opacity;
+}
+.ch:first-child {
+  align-items: flex-start;
+  padding-top: calc(var(--oy) + 210*var(--u));
+}
+.tag {
+  display: inline-block;
+  padding: calc(10*var(--u)) calc(18*var(--u));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: max(10px, calc(14*var(--u)));
+  background: var(--glass);
+  font-weight: 700;
+  font-size: max(11px, calc(15*var(--u)));
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: calc(26*var(--u));
+  backdrop-filter: blur(8px);
+}
+h1, h2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+h1 {
+  font-size: max(42px, calc(82*var(--u)));
+}
+h2 {
+  font-size: max(32px, calc(56*var(--u)));
+}
+p {
+  font-size: max(16px, calc(21*var(--u)));
+  line-height: 1.55;
+  margin-top: calc(24*var(--u));
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+}
+p.s {
+  font-size: max(18px, calc(25*var(--u)));
+  font-weight: 400;
+  margin-top: calc(20*var(--u));
+  color: rgba(255, 255, 255, 0.95);
+}
+.btns {
+  display: flex;
+  gap: calc(18*var(--u));
+  flex-wrap: wrap;
+  margin-top: calc(48*var(--u));
+}
+
+/* Feature & Product Cards */
+ul.pl {
+  list-style: none;
+  padding: 0;
+  margin-top: calc(26*var(--u));
+  display: grid;
+  gap: calc(14*var(--u));
+}
+ul.pl li {
+  padding: calc(16*var(--u)) calc(22*var(--u));
+  border: 1px solid var(--glass-border);
+  border-radius: max(12px, calc(16*var(--u)));
+  background: var(--card-glass);
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+ul.pl li:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(4px);
+}
+ul.pl b {
+  display: block;
+  font-size: max(16px, calc(21*var(--u)));
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+ul.pl span {
+  font-size: max(13px, calc(16*var(--u)));
+  opacity: 0.92;
+  line-height: 1.45;
+}
+
+/* Three Pillars Card Layout for Linar Difference */
+.pillars-grid {
+  display: grid;
+  gap: calc(12*var(--u));
+}
+.pillar-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.pillar-icon-badge {
+  width: max(26px, calc(34*var(--u)));
+  height: max(26px, calc(34*var(--u)));
+  background: #f25c3b;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: max(14px, calc(18*var(--u)));
+}
+.pillar-pill {
+  font-size: max(11px, calc(13*var(--u)));
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.04em;
+}
+
+/* Checklist Cards for Eligibility */
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(14*var(--u));
+}
+.check-icon-circle {
+  width: max(26px, calc(36*var(--u)));
+  height: max(26px, calc(36*var(--u)));
+  border-radius: 50%;
+  background: #f25c3b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: max(14px, calc(18*var(--u)));
+  box-shadow: 0 4px 12px rgba(242, 92, 59, 0.4);
+}
+
+/* Side Dots Navigation */
+#dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: grid;
+  gap: 14px;
+}
+#dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+#dots button.on {
+  background: #fff;
+  transform: scale(1.6);
+}
+#dots button:focus-visible, a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Floating Back-to-Top Button (Screenshot 1 & all screenshots) */
+#backToTop {
+  position: fixed;
+  right: max(18px, calc(26*var(--u)));
+  bottom: max(18px, calc(26*var(--u)));
+  width: max(44px, calc(52*var(--u)));
+  height: max(44px, calc(52*var(--u)));
+  border-radius: 50%;
+  background: #ffffff;
+  color: #f25c3b;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 49;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#backToTop:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+#backToTop svg {
+  width: max(20px, calc(24*var(--u)));
+  height: max(20px, calc(24*var(--u)));
+  stroke: #f25c3b;
+}
+
+/* Full Linar Footer (Screenshot 7) */
+.linar-footer-section {
+  position: relative;
+  z-index: 3;
+  background: rgba(10, 33, 134, 0.94);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  padding: calc(80*var(--u)) calc(var(--ox) + 158*var(--u)) calc(40*var(--u)) calc(var(--ox) + 158*var(--u));
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.6fr;
+  gap: calc(40*var(--u));
+  align-items: flex-start;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: calc(12*var(--u));
+  margin-bottom: calc(16*var(--u));
+}
+.footer-brand svg { width: max(38px, calc(52*var(--u))); height: auto; }
+.footer-brand b { font-weight: 800; font-size: max(20px, calc(28*var(--u))); }
+.footer-motto {
+  font-size: max(14px, calc(17*var(--u)));
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: calc(24*var(--u));
+  line-height: 1.45;
+}
+.footer-social-row {
+  display: flex;
+  gap: calc(12*var(--u));
+}
+.footer-social-btn {
+  width: max(38px, calc(46*var(--u)));
+  height: max(38px, calc(46*var(--u)));
+  border-radius: max(8px, calc(12*var(--u)));
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+.footer-social-btn svg { width: max(18px, calc(22*var(--u))); height: max(18px, calc(22*var(--u))); }
+
+.footer-col h4 {
+  font-size: max(16px, calc(20*var(--u)));
+  font-weight: 800;
+  margin-bottom: calc(20*var(--u));
+  letter-spacing: -0.01em;
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: calc(12*var(--u));
+}
+.footer-col ul a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: max(14px, calc(16*var(--u)));
+  transition: color 0.2s ease;
+}
+.footer-col ul a:hover { color: #fff; text-decoration: underline; }
+
+.contact-cards-stack {
+  display: grid;
+  gap: calc(10*var(--u));
+}
+.contact-item-card {
+  display: flex;
+  align-items: center;
+  gap: calc(14*var(--u));
+  padding: calc(12*var(--u)) calc(18*var(--u));
+  border-radius: max(10px, calc(14*var(--u)));
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.contact-item-icon {
+  width: max(32px, calc(40*var(--u)));
+  height: max(32px, calc(40*var(--u)));
+  border-radius: max(8px, calc(10*var(--u)));
+  background: #f25c3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-item-icon svg { width: max(16px, calc(20*var(--u))); height: max(16px, calc(20*var(--u))); stroke: #fff; }
+.contact-item-info { display: flex; flex-direction: column; }
+.contact-item-info .c-label { font-size: max(11px, calc(13*var(--u))); opacity: 0.75; }
+.contact-item-info a, .contact-item-info span {
+  font-weight: 700;
+  font-size: max(13px, calc(15*var(--u)));
+  color: #fff;
+  text-decoration: none;
+}
+.footer-bottom {
+  margin-top: calc(48*var(--u));
+  padding-top: calc(24*var(--u));
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: max(12px, calc(14*var(--u)));
+  color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Interactive Glassmorphic Quote Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-card {
+  width: 100%;
+  max-width: 580px;
+  background: linear-gradient(135deg, rgba(20, 35, 120, 0.95), rgba(10, 20, 80, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.modal-close:hover { background: rgba(255, 255, 255, 0.28); }
+.modal-header h3 { font-size: 26px; font-weight: 800; margin-top: 8px; margin-bottom: 6px; }
+.modal-header p { font-size: 14px; opacity: 0.85; margin: 0 0 20px 0; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.form-group input, .form-group select {
+  width: 100%;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: #f25c3b;
+  background: rgba(255, 255, 255, 0.16);
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.cover-type-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.radio-pill {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.radio-pill input { display: none; }
+.radio-pill:has(input:checked) {
+  background: #f25c3b;
+  border-color: #f25c3b;
+  color: #fff;
+}
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.slider-label span {
+  font-size: 16px;
+  font-weight: 800;
+  color: #f25c3b;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f25c3b;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.slider-bounds {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  opacity: 0.65;
+  margin-top: 4px;
+}
+.estimate-box {
+  background: rgba(242, 92, 59, 0.15);
+  border: 1px solid rgba(242, 92, 59, 0.4);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 18px 0;
+}
+.estimate-box span { font-size: 13px; }
+.estimate-box b { font-size: 20px; color: #fff; }
+.btn-submit-quote {
+  width: 100%;
+  background: #f25c3b;
+  color: #fff;
+  height: 50px;
+  border-radius: 14px;
+}
+.btn-submit-quote:hover { background: #ff6f50; }
+.quote-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0;
+}
+.quote-success-state .success-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #fff;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ring { animation: none; }
+}
+
+@media (max-width: 820px) {
+  nav ul { display: none; }
+  .nav-toggle-btn { display: block; }
+  .ch, .ch:first-child {
+    align-items: flex-start;
+    padding: calc(96px + env(safe-area-inset-top, 0px)) 22px 40px 22px;
+  }
+  .ch > div { max-width: 100%; }
+  .btns { margin-top: 24px; }
+  .tag { margin-bottom: 16px; }
+  p, p.s { margin-top: 14px; }
+  #dots { right: 8px; }
+  .footer-container { grid-template-columns: 1fr; }
+  .linar-footer-section { padding: 50px 22px 30px 22px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Dynamic fixed visual layers -->
+<div id="base" class="fx"></div>
+<div id="lA" class="fx lg"></div>
+<div id="lB" class="fx lg"></div>
+<div id="rC" class="fx"></div>
+<div id="stage" class="fx"></div>
+<div id="ring" class="fx"></div>
+
+<!-- Cutout Photograph of mother & daughter laughing (Transparent WebP) -->
+<img id="photo" class="fx" alt="A mother and daughter laughing together. Protect your loved ones and promote financial inclusion." src="{{ url_for('static', filename='images/hero-photo-cutout.webp') }}">
+
+<!-- Floating Shield Frosted Badge on the Photo (Screenshot 1) -->
+<div id="photoBadge">
+  <div class="badge-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <path d="m9 12 2 2 4-4"/>
+    </svg>
+  </div>
+  <div class="badge-text">
+    <span class="badge-title">Protect Your Loved Ones</span>
+    <span class="badge-sub">&amp; promote financial inclusion</span>
+  </div>
+</div>
+
+<!-- Three.js Canvas for 3D Cinematic Scroll Animation -->
+<canvas id="c" role="img" aria-label="Animated 3D scenes showing family protection, shelter, and financial inclusion"></canvas>
+
+<!-- Top Floating Frosted-Glass Navbar (Screenshot 1) -->
+<nav>
+  <a class="brand" href="#hero">
+    <svg viewBox="0 0 50 34" aria-hidden="true">
+      <defs>
+        <linearGradient id="lgx" x1="0" x2="1">
+          <stop offset="0" stop-color="#4f6bff"/>
+          <stop offset="1" stop-color="#f25c3b"/>
+        </linearGradient>
+      </defs>
+      <path d="M6 10c6-8 14-4 19 5s12 11 18 3c3-4-1-10-7-8M44 24c-6 8-14 4-19-5S13 8 7 16c-3 4 1 10 7 8" fill="none" stroke="url(#lgx)" stroke-width="5.5" stroke-linecap="round"/>
+    </svg>
+    <b>LINAR</b>
+  </a>
+
+  <ul>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#difference">The Linar Difference</a></li>
+    <li><a href="#eligibility">Eligibility</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#values">Values</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="btn btn-quote" onclick="openQuoteModal(event)">
+      Get A Quote 
+      <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <rect x="4" y="5" width="16" height="16" rx="3"/>
+        <path d="M9 3v4M15 3v4M8 12h8M8 16h5"/>
+      </svg>
+    </button>
+    <button class="nav-toggle-btn" onclick="toggleMobileNav()" aria-label="Toggle Navigation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Side dots for instant section jumping -->
+<div id="dots"></div>
+
+<!-- Floating Back to Top Button (Screenshot 1 & all screenshots) -->
+<button id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<main>
+  <!-- Chapter 1: The Future of Insurance (Hero - Screenshot 1) -->
+  <section class="ch" id="hero">
+    <div>
+      <span class="tag">Inclusive. Compassionate. Trustworthy.</span>
+      <h1>The Future<br>of Insurance</h1>
+      <p class="s">Live life better prepared</p>
+      <div class="btns">
+        <button class="btn" onclick="openQuoteModal(event)">
+          Get A Quote 
+          <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <rect x="4" y="5" width="16" height="16" rx="3"/>
+            <path d="M9 3v4M15 3v4M8 12h8M8 16h5"/>
+          </svg>
+        </button>
+        <a class="btn o" href="#eligibility">New To Insurance?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2: Life doesn't send a warning (3D Family & Storm) -->
+  <section class="ch" id="life">
+    <div>
+      <span class="tag">Preparedness &amp; Peace of Mind</span>
+      <h2>Life doesn’t send a warning.</h2>
+      <p>A sudden loss shouldn’t become a financial storm as well. The families who cope best are the ones who prepared early.</p>
+      <div class="btns">
+        <a class="btn o" href="#difference">See how we protect you &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3: The Linar Difference (3D Shelter Umbrella & 3 Pillars - Screenshot 3) -->
+  <section class="ch" id="difference">
+    <div>
+      <span class="tag">The Linar Difference</span>
+      <h2>How we aim to make a difference</h2>
+      <p>Linar keeps your family protected with plain-language cover and fair, transparent terms.</p>
+      <ul class="pl pillars-grid">
+        <li>
+          <div class="pillar-badge-row">
+            <span class="pillar-icon-badge">&#9825;</span>
+            <span class="pillar-pill">Heart</span>
+          </div>
+          <b>We lead with love</b>
+          <span>We want to improve the financial lives of our customers by putting our policyholders at the heart of everything we do.</span>
+        </li>
+        <li>
+          <div class="pillar-badge-row">
+            <span class="pillar-icon-badge">&#127891;</span>
+            <span class="pillar-pill">Education</span>
+          </div>
+          <b>We promote inclusion</b>
+          <span>We believe in customer-focused insurance products that are underpinned by financial education and inclusion.</span>
+        </li>
+        <li>
+          <div class="pillar-badge-row">
+            <span class="pillar-icon-badge">&#128269;</span>
+            <span class="pillar-pill">Expertise</span>
+          </div>
+          <b>We guide with excellence</b>
+          <span>Linar is founded and managed by experienced insurance professionals and financial services entrepreneurs.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Chapter 4: What we have to offer (3D Floating Heart, House, Shield - Screenshot 2) -->
+  <section class="ch" id="products">
+    <div>
+      <span class="tag">Products</span>
+      <h2>What we have to offer</h2>
+      <p>Cover that fits real life with financial peace of mind during mourning and beyond.</p>
+      <ul class="pl">
+        <li>
+          <b>Funeral cover</b>
+          <span>Linar's funeral cover makes sure that you have financial peace of mind during mourning.</span>
+        </li>
+        <li>
+          <b>Life cover</b>
+          <span>Long-term income security and generational wealth for those who depend on you.</span>
+        </li>
+        <li>
+          <b>Family cover</b>
+          <span>One comprehensive plan that looks after everyone at home.</span>
+        </li>
+      </ul>
+      <div class="btns">
+        <button class="btn" onclick="openQuoteModal(event)">
+          Get A Linar Quote 
+          <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <rect x="4" y="5" width="16" height="16" rx="3"/>
+            <path d="M9 3v4M15 3v4M8 12h8M8 16h5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 5: Eligibility (72-Person 3D Community Crowd - Screenshots 4 & 5) -->
+  <section class="ch" id="eligibility">
+    <div>
+      <span class="tag">Eligibility</span>
+      <h2>Are you eligible for Linar cover?</h2>
+      <p>To be eligible for cover, you must meet the following conditions at the start date:</p>
+      <ul class="pl checklist">
+        <li>
+          <span class="check-icon-circle">&#10003;</span>
+          <div>
+            <b>Identity Document</b>
+            <span>Have a South African Identity Document</span>
+          </div>
+        </li>
+        <li>
+          <span class="check-icon-circle">&#10003;</span>
+          <div>
+            <b>In South Africa?</b>
+            <span>Live within the borders of South Africa</span>
+          </div>
+        </li>
+        <li>
+          <span class="check-icon-circle">&#10003;</span>
+          <div>
+            <b>Bank Account</b>
+            <span>Have a South African bank account</span>
+          </div>
+        </li>
+      </ul>
+      <div class="btns">
+        <a class="btn o" href="#contact">Speak to a Linar consultant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 6: Resources & Getting A Quote (Screenshot 6) -->
+  <section class="ch" id="resources">
+    <div>
+      <span class="tag">Resources</span>
+      <h2>Is insurance new to you?</h2>
+      <p>Learn about the basics of insurance and why you need it.</p>
+      <ul class="pl">
+        <li>
+          <b>How to choose Life Insurance?</b>
+          <span>Essential guidance on securing your family's future standard of living.</span>
+        </li>
+        <li>
+          <b>How to choose Funeral Cover?</b>
+          <span>When selecting funeral cover, it is important to know your immediate benefits.</span>
+        </li>
+        <li>
+          <b>Who Needs Funeral Cover?</b>
+          <span>Funeral cover is beneficial for anyone who wants certainty and dignity in grief.</span>
+        </li>
+      </ul>
+      <div class="btns" id="quote">
+        <button class="btn" onclick="openQuoteModal(event)">
+          Get A Quote 
+          <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <rect x="4" y="5" width="16" height="16" rx="3"/>
+            <path d="M9 3v4M15 3v4M8 12h8M8 16h5"/>
+          </svg>
+        </button>
+        <a class="btn o" href="#contact">Speak to a Linar consultant</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Full Linar Footer (Screenshot 7) -->
+<footer class="linar-footer-section" id="values">
+  <div class="footer-container">
+    <div class="footer-col brand-col">
+      <div class="footer-brand">
+        <svg viewBox="0 0 50 34" aria-hidden="true">
+          <defs>
+            <linearGradient id="lgx-f" x1="0" x2="1">
+              <stop offset="0" stop-color="#4f6bff"/>
+              <stop offset="1" stop-color="#f25c3b"/>
+            </linearGradient>
+          </defs>
+          <path d="M6 10c6-8 14-4 19 5s12 11 18 3c3-4-1-10-7-8M44 24c-6 8-14 4-19-5S13 8 7 16c-3 4 1 10 7 8" fill="none" stroke="url(#lgx-f)" stroke-width="5.5" stroke-linecap="round"/>
+        </svg>
+        <b>LINAR</b>
+      </div>
+      <p class="footer-motto">The heart of insurance in South Africa</p>
+      <div class="footer-social-row">
+        <a href="https://wa.me/27105413333" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col links-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#difference">The Linar Difference</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#values">Values</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col contact-col" id="contact">
+      <h4>Contact Us</h4>
+      <div class="contact-cards-stack">
+        <div class="contact-item-card">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-item-info">
+            <span class="c-label">Email</span>
+            <a href="mailto:Insurance@linar.co.za">Insurance@linar.co.za</a>
+          </div>
+        </div>
+        <div class="contact-item-card">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-item-info">
+            <span class="c-label">Contact Number</span>
+            <a href="tel:0105413333">010 541 3333</a>
+          </div>
+        </div>
+        <div class="contact-item-card">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="contact-item-info">
+            <span class="c-label">Office Hours</span>
+            <span>8:30 - 17:00 Mon - Fri</span>
+          </div>
+        </div>
+        <div class="contact-item-card">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-item-info">
+            <span class="c-label">Address</span>
+            <span>155 West Street, Sandown, Sandton, 2031</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Linar Financial Services (Pty) Ltd. Authorised Financial Services Provider. All Rights Reserved.</p>
+    <p>Live life better prepared.</p>
+  </div>
+</footer>
+
+<!-- Interactive Glassmorphic Quote Modal -->
+<div id="quoteModal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeQuoteModal()" aria-label="Close modal">&times;</button>
+    <div class="modal-header">
+      <span class="tag">Instant Quote Estimate</span>
+      <h3>Get A Linar Quote</h3>
+      <p>Simple, transparent, compassionate cover tailored for you.</p>
+    </div>
+    <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+      <div class="form-group">
+        <label>Select Cover Type</label>
+        <div class="cover-type-selector">
+          <label class="radio-pill"><input type="radio" name="product" value="funeral" checked><span>Funeral Cover</span></label>
+          <label class="radio-pill"><input type="radio" name="product" value="life"><span>Life Insurance</span></label>
+          <label class="radio-pill"><input type="radio" name="product" value="family"><span>Family Cover</span></label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" name="name" required placeholder="e.g. Nomvula Dlamini">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" required placeholder="082 123 4567">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" required placeholder="nomvula@example.co.za">
+        </div>
+        <div class="form-group">
+          <label>SA ID Number</label>
+          <input type="text" name="id_number" placeholder="YYMMDD SSSS C A Z">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="slider-label">
+          <label>Cover Amount</label>
+          <span id="coverAmountDisplay">R 50,000</span>
+        </div>
+        <input type="range" id="coverSlider" min="10000" max="150000" step="5000" value="50000" oninput="updateCoverAmount(this.value)">
+        <div class="slider-bounds"><span>R 10,000</span><span>R 150,000</span></div>
+      </div>
+      <div class="estimate-box">
+        <span>Estimated Monthly Premium:</span>
+        <b id="premiumEstimate">R 125 / mo</b>
+      </div>
+      <button type="submit" class="btn btn-submit-quote">Submit Quote Request &rarr;</button>
+    </form>
+    <div id="quoteSuccess" class="quote-success-state" style="display:none;">
+      <div class="success-icon">&#10004;</div>
+      <h4>Quote Received!</h4>
+      <p>Thank you! A dedicated Linar consultant will reach out to you within one business day.</p>
+      <button class="btn" onclick="closeQuoteModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Three.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cl = (x,a=0,b=1)=>Math.min(b,Math.max(a,x)), lerp=(a,b,t)=>a+(b-a)*t;
+const sm = x=>{x=cl(x);return x*x*(3-2*x)}, ease=x=>1-Math.pow(1-cl(x),3);
+const $ = id=>document.getElementById(id);
+
+// Three.js Canvas & Renderer
+const canvas = $('c');
+const R = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true});
+R.setPixelRatio(Math.min(devicePixelRatio, 2));
+const S = new THREE.Scene(), C = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+C.position.z = 12;
+
+S.add(new THREE.HemisphereLight(0xffffff, 0xffc9b8, 0.9));
+const dl = new THREE.DirectionalLight(0xfff1e6, 1.1);
+dl.position.set(-4, 6, 6);
+S.add(dl);
+
+const G = new THREE.Group();
+S.add(G);
+
+const M = (c, r=0.55, m=0.05)=>new THREE.MeshStandardMaterial({color: c, roughness: r, metalness: m});
+const skins = [0x8a5a44, 0xc08a6a, 0x6b4332, 0xa56b4f, 0xd9a37f];
+
+// 3D Figure Builder
+function figure(body, skin, h, r) {
+  const g = new THREE.Group();
+  const b = new THREE.Mesh(new THREE.CylinderGeometry(r*0.78, r, h, 20), M(body, 0.6));
+  b.position.y = h/2;
+  g.add(b);
+  const hd = new THREE.Mesh(new THREE.SphereGeometry(r*0.8, 20, 16), M(skin, 0.6));
+  hd.position.y = h + r*0.55;
+  g.add(hd);
+  return g;
+}
+
+const figG = new THREE.Group();
+figG.position.y = -1.95;
+G.add(figG);
+[[-0.85, 0xf25c3b, skins[0], 1.25, 0.34], [0.1, 0xffffff, skins[1], 1.35, 0.36], [0.95, 0x4f6bff, skins[2], 0.8, 0.27]].forEach(a=>{
+  const f = figure(a[1], a[2], a[3], a[4]);
+  f.position.x = a[0];
+  figG.add(f);
+});
+
+// Storm Cloud & Rain Particles (Chapter 2)
+const cloudG = new THREE.Group();
+cloudG.position.y = 2.15;
+G.add(cloudG);
+const cm = M(0x9aa3d0, 0.9, 0);
+[[-1.3, 0], [0, 0.35], [1.35, 0]].forEach(c=>{
+  [[0, 0, 0.6], [0.55, -0.1, 0.45], [-0.55, -0.1, 0.45], [0.2, 0.3, 0.4]].forEach(s=>{
+    const m = new THREE.Mesh(new THREE.SphereGeometry(s[2], 20, 16), cm);
+    m.position.set(c[0]+s[0], c[1]+s[1], 0);
+    cloudG.add(m);
+  });
+});
+
+const NR = 130, rp = new Float32Array(NR*6), rv = [];
+for (let i=0; i<NR; i++) {
+  const x = (Math.random()-0.5)*5.4, y = Math.random()*5-2.6, z = (Math.random()-0.2)*1.8;
+  rp.set([x, y, z, x-0.05, y-0.28, z], i*6);
+  rv.push(0.05 + Math.random()*0.05);
+}
+const rg = new THREE.BufferGeometry();
+rg.setAttribute('position', new THREE.BufferAttribute(rp, 3));
+const rain = new THREE.LineSegments(rg, new THREE.LineBasicMaterial({color: 0xdce8ff, transparent: true, opacity: 0}));
+G.add(rain);
+
+// Shelter Umbrella (Chapter 3)
+const umb = new THREE.Group();
+G.add(umb);
+for (let i=0; i<8; i++) {
+  const m = new THREE.Mesh(new THREE.SphereGeometry(2.15, 16, 12, i*Math.PI/4, Math.PI/4, 0, Math.PI/2), new THREE.MeshStandardMaterial({color: i%2?0x2a3fb5:0xf25c3b, roughness: 0.5, side: THREE.DoubleSide}));
+  m.scale.y = 0.75;
+  umb.add(m);
+}
+const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 2, 10), M(0x222a55));
+pole.position.y = 0.55;
+umb.add(pole);
+const tip = new THREE.Mesh(new THREE.SphereGeometry(0.1, 12, 12), M(0xffffff));
+tip.position.y = 1.68;
+umb.add(tip);
+
+// 3D Floating Icons: Heart, House, Shield (Chapter 4)
+const icons = new THREE.Group();
+G.add(icons);
+const bev = {depth: 0.3, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05, bevelSegments: 3};
+
+// Heart
+const hs = new THREE.Shape();
+hs.moveTo(0.25, 0.25);
+hs.bezierCurveTo(0.25, 0.25, 0.2, 0, 0, 0);
+hs.bezierCurveTo(-0.3, 0, -0.3, 0.35, -0.3, 0.35);
+hs.bezierCurveTo(-0.3, 0.55, -0.15, 0.77, 0.25, 0.95);
+hs.bezierCurveTo(0.6, 0.77, 0.8, 0.55, 0.8, 0.35);
+hs.bezierCurveTo(0.8, 0.35, 0.8, 0, 0.5, 0);
+hs.bezierCurveTo(0.35, 0, 0.25, 0.25, 0.25, 0.25);
+const hg = new THREE.ExtrudeGeometry(hs, bev);
+hg.center();
+const heart = new THREE.Mesh(hg, M(0xf25c3b, 0.4));
+heart.rotation.z = Math.PI;
+heart.position.set(0, 1, 0);
+icons.add(heart);
+
+// House
+const house = new THREE.Group();
+const hb = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.8, 0.9), M(0xffffff));
+hb.position.y = -0.2;
+house.add(hb);
+const rg2 = new THREE.CylinderGeometry(0.78, 0.78, 1.05, 3);
+rg2.rotateX(-Math.PI/2);
+const roof = new THREE.Mesh(rg2, M(0x0a2186));
+roof.position.y = 0.59;
+house.add(roof);
+const door = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.45, 0.05), M(0xf25c3b));
+door.position.set(0, -0.38, 0.46);
+house.add(door);
+house.position.set(-1.35, -0.95, 0);
+icons.add(house);
+
+// Shield
+const sh = new THREE.Shape();
+sh.moveTo(0, 2.1);
+sh.bezierCurveTo(0.9, 1.8, 1.7, 1.8, 2.2, 1.9);
+sh.lineTo(2.2, 0.5);
+sh.bezierCurveTo(2.2, -1.1, 1.2, -2, 0, -2.7);
+sh.bezierCurveTo(-1.2, -2, -2.2, -1.1, -2.2, 0.5);
+sh.lineTo(-2.2, 1.9);
+sh.bezierCurveTo(-1.7, 1.8, -0.9, 1.8, 0, 2.1);
+const sg = new THREE.ExtrudeGeometry(sh, {depth: 0.5, bevelEnabled: true, bevelSize: 0.1, bevelThickness: 0.1, bevelSegments: 3});
+sg.center();
+const shield = new THREE.Mesh(sg, M(0xffffff, 0.4));
+shield.scale.setScalar(0.27);
+shield.position.set(1.35, -0.95, 0);
+icons.add(shield);
+
+// 72-person animated community crowd (Chapter 5)
+const NC = 72;
+const bodies = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.12, 0.16, 0.5, 12), M(0xffffff, 0.6), NC);
+const heads = new THREE.InstancedMesh(new THREE.SphereGeometry(0.125, 14, 12), M(0xffffff, 0.6), NC);
+const bc = [0xffffff, 0xf25c3b, 0x4f6bff, 0x5a55c6, 0xffd2c4], cpos = [];
+for (let i=0; i<NC; i++) {
+  const r = Math.sqrt((i+0.5)/NC)*2.45, a = i*2.399963;
+  cpos.push([Math.cos(a)*r, Math.sin(a)*r*0.9 - 0.15]);
+  bodies.setColorAt(i, new THREE.Color(bc[i%5]));
+  heads.setColorAt(i, new THREE.Color(skins[(i*3)%5]));
+}
+const crowd = new THREE.Group();
+crowd.add(bodies, heads);
+G.add(crowd);
+const dm = new THREE.Object3D();
+
+// 6 Color Palettes for Chapter Transitions: [base, left-a, left-b, left-c, right-circle, stage]
+const K = [
+  ['#0a2186', '#4a55c0', '#a85a78', '#f25c3b', '#f25c3b', '#0a2186'],
+  ['#1c2352', '#39426f', '#5d5f8a', '#7d86b5', '#3b4478', '#7d86b5'],
+  ['#0a2186', '#4a55c0', '#7b6fd6', '#4f6bff', '#f25c3b', '#ffffff'],
+  ['#0a2186', '#5a4fc2', '#a2508f', '#f25c3b', '#f25c3b', '#4f6bff'],
+  ['#0a2186', '#4a55c0', '#a85a78', '#f25c3b', '#f25c3b', '#5a55c6'],
+  ['#0a2186', '#4a55c0', '#a85a78', '#f25c3b', '#f25c3b', '#0a2186']
+].map(r => r.map(h => new THREE.Color(h)));
+
+const keys = ['--base', '--a', '--b', '--c', '--r', '--stage'];
+const n = 5;
+const rs = document.documentElement.style, tmp = new THREE.Color();
+const photo = $('photo'), stage = $('stage'), ring = $('ring'), lB = $('lB'), rC = $('rC');
+const photoBadge = $('photoBadge');
+const btt = $('backToTop');
+
+let W = 1, H = 1, u = 1, ox = 0, oy = 0, AX = 0, AY = 0, AD = 1;
+function box(el, x, y, w, h) {
+  if (!el) return;
+  Object.assign(el.style, {left: x+'px', top: y+'px', width: w+'px', height: h+'px'});
+}
+
+function size() {
+  W = innerWidth;
+  H = innerHeight;
+  R.setSize(W, H, false);
+  C.aspect = W / H;
+  C.updateProjectionMatrix();
+
+  const mob = W <= 820;
+  u = mob ? W / 585 : Math.min(W / 1530, H / 700);
+  ox = mob ? -760 * u : (W - 1530 * u) / 2;
+  oy = H - 700 * u;
+
+  rs.setProperty('--u', u + 'px');
+  rs.setProperty('--ox', ox + 'px');
+  rs.setProperty('--oy', oy + 'px');
+
+  box(lB, ox + 100 * u, oy + 2 * u, 780 * u, 780 * u);
+  box(rC, ox + 1035 * u, oy + 2 * u, 960 * u, 960 * u);
+  AX = ox + 1148 * u;
+  AY = oy + 377 * u;
+  AD = 416 * u;
+  box(stage, AX - AD * 0.65, AY - AD * 0.65, AD * 1.3, AD * 1.3);
+  box(ring, AX - AD / 2, AY - AD / 2, AD, AD);
+  box(photo, ox + 760 * u, H - 502 * u, 585 * u, 502 * u);
+
+  // Position Floating Badge over bottom-right of photo (Screenshot 1)
+  if (mob) {
+    box(photoBadge, 16, H - 90, W - 32, 64);
+  } else {
+    box(photoBadge, ox + 950 * u, H - 128 * u, 360 * u, 72 * u);
+  }
+}
+addEventListener('resize', size);
+size();
+
+// Side Chapter Dots Setup
+const secs = [...document.querySelectorAll('main > .ch')], dotsEl = $('dots');
+secs.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.setAttribute('aria-label', 'Go to section ' + (i + 1));
+  b.onclick = () => scrollTo({top: s.offsetTop, behavior: reduce ? 'auto' : 'smooth'});
+  dotsEl.appendChild(b);
+});
+const dbtn = [...dotsEl.children];
+
+// Mouse Move Parallax
+let mx = 0, my = 0, sp = 0, start = performance.now();
+addEventListener('pointermove', e => {
+  mx = e.clientX / W - 0.5;
+  my = e.clientY / H - 0.5;
+});
+const UP = 2 * 12 * Math.tan(20 * Math.PI / 180);
+
+// Animation Frame Render Loop
+function frame(now) {
+  const t = (now - start) / 1000;
+  const max = document.documentElement.scrollHeight - H;
+  const p = max > 0 ? scrollY / max : 0;
+  sp += (p - sp) * (reduce ? 1 : 0.08);
+
+  const f = sp * n, upp = UP / H;
+  G.position.set((AX - W / 2) * upp + mx * 0.2, -(AY - H / 2) * upp - my * 0.15, 0);
+  G.scale.setScalar(AD * upp / 3.6);
+  G.rotation.y += ((mx * 0.35) - G.rotation.y) * 0.05;
+  G.rotation.x += ((my * 0.2) - G.rotation.x) * 0.05;
+
+  const pw = Math.max(1 - sm(f / 0.7), sm((f - 4.5) / 0.5));
+  const intro = reduce ? 1 : ease((t - 0.15) / 1.3);
+
+  // Synchronized Photo & Floating Badge Animation
+  photo.style.opacity = pw * intro;
+  photo.style.transform = `translateY(${(1 - pw) * 7 + (1 - intro) * 5}%) scale(${0.92 + 0.08 * pw})`;
+  
+  if (photoBadge) {
+    photoBadge.style.opacity = pw * intro;
+    photoBadge.style.transform = `translateY(${((1 - pw) * 8 + (1 - intro) * 6) * 8}px) scale(${0.92 + 0.08 * pw})`;
+  }
+
+  stage.style.opacity = 1 - pw;
+  ring.style.opacity = 0.35 + 0.65 * pw;
+  stage.style.transform = `scale(${0.85 + 0.15 * (1 - pw)})`;
+
+  // Color Palette Interpolation
+  const j = cl(f, 0, n - 0.0001);
+  const ci = Math.floor(j);
+  const cu = sm(j - ci);
+  keys.forEach((k, q) => {
+    tmp.copy(K[ci][q]).lerp(K[ci + 1][q], cu);
+    rs.setProperty(k, '#' + tmp.getHexString());
+  });
+
+  // Storm Clouds & Rain (Chapter 2)
+  const stw = sm((f - 0.3) / 0.5) * (1 - sm((f - 1.7) / 0.4));
+  cloudG.scale.setScalar(Math.max(0.001, stw));
+  cloudG.position.x = Math.sin(t * 0.4) * 0.25;
+  cm.color.setHex(0x9aa3d0).lerp(tmp.setHex(0x5b6395), stw);
+  rain.material.opacity = stw * 0.85;
+  if (stw > 0.01) {
+    const a = rg.attributes.position.array;
+    for (let i = 0; i < NR; i++) {
+      const k = i * 6;
+      a[k + 1] -= rv[i];
+      a[k + 4] -= rv[i];
+      if (a[k + 1] < -2.8) {
+        a[k + 1] = 2.2;
+        a[k + 4] = 1.92;
+      }
+    }
+    rg.attributes.position.needsUpdate = true;
+  }
+
+  // Family Figures
+  const fw = sm((f - 0.5) / 0.5) * (1 - sm((f - 2.7) / 0.4));
+  figG.scale.setScalar(Math.max(0.001, fw));
+  figG.children.forEach((c, i) => {
+    c.rotation.z = Math.sin(t * 1.3 + i * 2) * 0.03 * (1 - sm(f - 1.5));
+  });
+
+  // Shelter Umbrella (Chapter 3)
+  const uw = sm((f - 1.5) / 0.6) * (1 - sm((f - 2.7) / 0.4));
+  umb.visible = uw > 0.01;
+  umb.scale.set(uw, lerp(0.15, 1, uw), uw);
+  umb.position.y = lerp(-0.4, 0.3, uw);
+  umb.rotation.y = t * 0.25;
+  umb.rotation.z = Math.sin(t * 0.7) * 0.04;
+
+  // 3D Floating Icons: Heart, House, Shield (Chapter 4)
+  const iw = sm((f - 2.6) / 0.4) * (1 - sm((f - 3.5) / 0.4));
+  icons.visible = iw > 0.01;
+  icons.scale.setScalar(Math.max(0.001, iw));
+  heart.scale.setScalar(1.5 * (1 + 0.09 * Math.pow(Math.max(0, Math.sin(t * 3.2)), 8) + 0.03 * Math.sin(t * 3.2)));
+  heart.position.y = 1 + Math.sin(t * 1.2) * 0.06;
+  house.rotation.y = Math.sin(t * 0.6) * 0.5;
+  house.position.y = -0.95 + Math.sin(t * 1.1 + 1) * 0.06;
+  shield.rotation.y = Math.sin(t * 0.6 + 2) * 0.5;
+  shield.position.y = -0.95 + Math.sin(t * 1.1 + 2) * 0.06;
+
+  // 72-Person Community Crowd (Chapter 5)
+  const cw = sm((f - 3.5) / 0.4) * (1 - sm((f - 4.4) / 0.4));
+  crowd.visible = cw > 0.01;
+  if (crowd.visible) {
+    for (let i = 0; i < NC; i++) {
+      const c = cpos[i], bob = Math.max(0, Math.sin(t * 2.2 - Math.hypot(c[0], c[1]) * 1.6)) * 0.12, s = cw * 0.85;
+      dm.position.set(c[0], c[1] + 0.25 * s + bob, 0);
+      dm.scale.setScalar(s);
+      dm.updateMatrix();
+      bodies.setMatrixAt(i, dm.matrix);
+      dm.position.set(c[0], c[1] + 0.62 * s + bob, 0);
+      dm.updateMatrix();
+      heads.setMatrixAt(i, dm.matrix);
+    }
+    bodies.instanceMatrix.needsUpdate = heads.instanceMatrix.needsUpdate = true;
+  }
+
+  // Section Typography Reveal
+  secs.forEach((s, i) => {
+    const r = s.getBoundingClientRect();
+    const v = cl(1 - Math.abs(r.top + r.height / 2 - H / 2) / (H * 0.6));
+    const el = s.firstElementChild;
+    let e = i == 0 ? 1 - sm(f / 0.6) : sm(v * 1.25);
+    if (i == 0 && !reduce) e *= ease((t - 0.3) / 1.1);
+    if (el) {
+      el.style.opacity = e;
+      el.style.transform = `translateY(${(1 - e) * (r.top > 0 ? 44 : -44)}px)`;
+    }
+  });
+
+  // Dots indicator update
+  dbtn.forEach((b, i) => b.classList.toggle('on', Math.round(p * (secs.length - 1)) == i));
+
+  // Back-to-Top Button Visibility
+  if (btt) {
+    const showBtt = scrollY > 200;
+    btt.style.opacity = showBtt ? '1' : '0';
+    btt.style.pointerEvents = showBtt ? 'auto' : 'none';
+  }
+
+  R.render(S, C);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// Back to Top Click
+if (btt) {
+  btt.addEventListener('click', () => {
+    scrollTo({top: 0, behavior: reduce ? 'auto' : 'smooth'});
+  });
+}
+
+// Nav Link Smooth Scrolling
+document.querySelectorAll('nav ul a, .footer-col ul a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+      }
+    }
+  });
+});
+
+})();
+
+// Interactive Quote Modal Functions
+function openQuoteModal(e) {
+  if (e) e.preventDefault();
+  const m = document.getElementById('quoteModal');
+  if (m) {
+    m.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeQuoteModal() {
+  const m = document.getElementById('quoteModal');
+  if (m) {
+    m.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+function updateCoverAmount(val) {
+  const d = document.getElementById('coverAmountDisplay');
+  const p = document.getElementById('premiumEstimate');
+  const amount = parseInt(val, 10);
+  if (d) d.textContent = 'R ' + amount.toLocaleString('en-ZA');
+  const prem = Math.round(35 + (amount / 1000) * 1.8);
+  if (p) p.textContent = 'R ' + prem + ' / mo';
+}
+async function handleQuoteSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  try {
+    await fetch('/get-a-quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (err) {
+    console.log('Quote recorded:', data);
+  }
+  form.style.display = 'none';
+  const s = document.getElementById('quoteSuccess');
+  if (s) s.style.display = 'flex';
+}
+function toggleMobileNav() {
+  const ul = document.querySelector('nav ul');
+  if (ul) {
+    const isShown = ul.style.display === 'flex';
+    ul.style.display = isShown ? 'none' : 'flex';
+    if (!isShown) {
+      ul.style.position = 'absolute';
+      ul.style.top = '100%';
+      ul.style.left = '0';
+      ul.style.right = '0';
+      ul.style.flexDirection = 'column';
+      ul.style.background = 'rgba(10, 33, 134, 0.96)';
+      ul.style.backdropFilter = 'blur(16px)';
+      ul.style.padding = '20px';
+      ul.style.borderRadius = '16px';
+      ul.style.marginTop = '10px';
+      ul.style.gap = '16px';
+    }
+  }
+}
+</script>
+</body>
+</html>

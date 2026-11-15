@@ -1,0 +1,1141 @@
+/* ==========================================================================
+   LINAR INSURANCE — OFFICIAL STYLESHEET (main.css)
+   Pixel-perfect recreation of linar.co.za with cinematic visual enhancements
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES & TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Palette */
+  --linar-navy: #080E4B;
+  --linar-navy-dark: #050A38;
+  --linar-royal-blue: #1E3AE8;
+  --linar-mid-blue: #13248A;
+  --linar-coral: #E84E1B;
+  --linar-orange: #FF5A1F;
+  --linar-white: #FFFFFF;
+  --linar-text-muted: rgba(255, 255, 255, 0.78);
+
+  /* Glassmorphism System */
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-bg-hover: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+
+  --card-glass-bg: rgba(15, 26, 92, 0.55);
+  --card-glass-border: rgba(255, 255, 255, 0.14);
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Transitions */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.2s ease;
+  --trans-smooth: 0.35s ease;
+  --trans-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL BASE & RESET
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--linar-navy);
+  color: var(--linar-white);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--linar-navy-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--linar-coral);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--linar-orange);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--trans-fast);
+}
+
+/* --------------------------------------------------------------------------
+   3. FLOATING GLASSMORPHISM NAVBAR (.linar-navbar)
+   -------------------------------------------------------------------------- */
+.linar-navbar-wrapper {
+  padding: 18px 0;
+  z-index: 1050;
+  pointer-events: none;
+  /* allows clicking around the pill */
+  transition: padding var(--trans-smooth);
+}
+
+.linar-navbar {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 10px 24px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.28);
+  transition: all var(--trans-smooth);
+}
+
+.linar-navbar-wrapper.scrolled .linar-navbar {
+  background: rgba(8, 14, 75, 0.88);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Brand Logo */
+.linar-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: 0.05em;
+  color: var(--linar-white);
+}
+
+/* Nav Links */
+.linar-nav-link {
+  color: var(--linar-white) !important;
+  font-weight: 500;
+  font-size: 0.96rem;
+  padding: 6px 4px;
+  position: relative;
+  transition: color var(--trans-fast);
+}
+
+.linar-nav-link:hover {
+  color: var(--linar-orange) !important;
+}
+
+.linar-nav-link.active {
+  font-weight: 700;
+}
+
+.linar-nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--linar-coral);
+  border-radius: 2px;
+}
+
+/* Quote Button Pill */
+.btn-quote-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--linar-white);
+  color: var(--linar-navy) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 9px 24px;
+  border-radius: 30px;
+  border: 2px solid var(--linar-white);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  transition: all var(--trans-smooth);
+}
+
+.btn-quote-pill:hover {
+  background: var(--linar-coral);
+  color: var(--linar-white) !important;
+  border-color: var(--linar-coral);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(232, 78, 27, 0.45);
+}
+
+/* Mobile Toggler */
+.navbar-toggler-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-menu-card {
+  pointer-events: auto;
+  background: rgba(8, 14, 75, 0.96);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-nav-link {
+  color: var(--linar-white);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--linar-orange);
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO SECTION (.hero-section) — Pixel Perfect to Screenshot 1
+   -------------------------------------------------------------------------- */
+.hero-section {
+  min-height: 100vh;
+  position: relative;
+  background: var(--linar-navy);
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Left Navy / Royal Blue Radiant Gradient */
+.hero-organic-navy-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 40%, #1A278A 0%, var(--linar-navy) 75%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Right Vibrant Coral Organic Shape — matches reference screenshot */
+.hero-organic-coral-shape {
+  position: absolute;
+  top: -15%;
+  right: -10%;
+  width: 65%;
+  height: 130%;
+  background: radial-gradient(circle at 60% 50%, #EA4D23 0%, #D43E16 55%, transparent 75%);
+  border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+  z-index: 0;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.hero-content-container {
+  z-index: 2;
+}
+
+/* Trust Pill Badge */
+.hero-trust-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50px;
+  padding: 8px 22px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--linar-white);
+  text-transform: uppercase;
+}
+
+/* Headline */
+.hero-title {
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--linar-white);
+}
+
+/* Subtitle */
+.hero-subtitle {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--linar-text-muted);
+  font-weight: 400;
+}
+
+/* Hero CTA Buttons */
+.btn-hero-white {
+  display: inline-flex;
+  align-items: center;
+  background: var(--linar-white);
+  color: var(--linar-navy) !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 13px 32px;
+  border-radius: 50px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: all var(--trans-smooth);
+}
+
+.btn-hero-white:hover {
+  background: var(--linar-coral);
+  color: var(--linar-white) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(232, 78, 27, 0.45);
+}
+
+.btn-hero-outline {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: var(--linar-white) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: all var(--trans-smooth);
+}
+
+.btn-hero-outline:hover {
+  background: var(--linar-white);
+  color: var(--linar-navy) !important;
+  border-color: var(--linar-white);
+  transform: translateY(-3px);
+}
+
+/* Hero Right Visuals */
+.hero-visual-frame {
+  width: 440px;
+  height: 440px;
+  max-width: 90vw;
+  max-height: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dashed Orbital Circle */
+.dashed-orbit-ring {
+  position: absolute;
+  width: 112%;
+  height: 112%;
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  animation: rotateOrbit 60s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-orange-circle-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #EA4D23 0%, #D83B10 80%);
+  border-radius: 50%;
+  z-index: 0;
+  box-shadow: 0 20px 60px rgba(234, 77, 35, 0.4);
+}
+
+.hero-photo-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+/* Floating Frosted Glass Card */
+.hero-floating-glass-card {
+  position: absolute;
+  bottom: 0px;
+  left: -20px;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 330px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  animation: floatCard 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+.floating-card-icon-badge {
+  width: 44px;
+  height: 44px;
+  background: #2563EB;
+  color: var(--linar-white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Hero Scroll Hint */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.8rem;
+  z-index: 3;
+  animation: bounceDown 2s infinite;
+}
+
+@keyframes bounceDown {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. PRODUCTS SECTION (.products-section) — Screenshot 2
+   -------------------------------------------------------------------------- */
+.products-section {
+  padding: 120px 0;
+  background: var(--linar-navy);
+}
+
+.section-pill-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  padding: 6px 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--linar-white);
+  text-transform: uppercase;
+}
+
+.section-main-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.15;
+}
+
+.section-lead-text {
+  font-size: 1.1rem;
+}
+
+/* Product Photo Accent Box */
+.product-photo-accent-container {
+  width: 360px;
+  height: 380px;
+  max-width: 100%;
+}
+
+.product-accent-coral-box {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 100%;
+  height: 100%;
+  background: var(--linar-coral);
+  border-radius: 40px;
+  z-index: 0;
+}
+
+.product-img-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: var(--linar-navy-dark);
+}
+
+/* Product Cards */
+.linar-feature-card {
+  background: rgba(14, 25, 96, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
+}
+
+.linar-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.funeral-card {
+  border-left: 5px solid var(--linar-coral);
+}
+
+.product-card-title {
+  font-size: 1.6rem;
+  color: var(--linar-white);
+}
+
+.product-card-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.btn-card-quote {
+  display: inline-flex;
+  align-items: center;
+  background: var(--linar-white);
+  color: var(--linar-navy) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: 2px solid var(--linar-white);
+  transition: all var(--trans-smooth);
+}
+
+.btn-card-quote:hover {
+  background: var(--linar-coral);
+  color: var(--linar-white) !important;
+  border-color: var(--linar-coral);
+  transform: translateY(-2px);
+}
+
+.btn-card-outline-quote {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--linar-white) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  transition: all var(--trans-smooth);
+}
+
+.btn-card-outline-quote:hover {
+  background: var(--linar-white);
+  color: var(--linar-navy) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. THE LINAR DIFFERENCE SECTION (.difference-section) — Screenshot 3
+   -------------------------------------------------------------------------- */
+.difference-section {
+  padding: 130px 0;
+  background: var(--linar-navy);
+}
+
+/* Radiant Blue Sphere Glow in center */
+.diff-luminous-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(30, 58, 232, 0.65) 0%, rgba(30, 58, 232, 0) 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glass Difference Cards */
+.difference-glass-card {
+  background: rgba(10, 20, 80, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: all var(--trans-smooth);
+}
+
+.difference-glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(30, 58, 232, 0.35);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.diff-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--linar-white);
+  font-size: 1.35rem;
+}
+
+.coral-badge {
+  background: var(--linar-coral);
+}
+
+.orange-badge {
+  background: var(--linar-orange);
+}
+
+.diff-category-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--linar-white);
+}
+
+.diff-card-title {
+  font-size: 1.35rem;
+  color: var(--linar-white);
+}
+
+.diff-card-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   7. ELIGIBILITY SECTION (.eligibility-section) — Screenshots 4 & 5
+   -------------------------------------------------------------------------- */
+.eligibility-section {
+  padding: 130px 0;
+  background: var(--linar-navy);
+}
+
+.eligibility-coral-glow {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232, 78, 27, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.eligibility-check-item {
+  background: rgba(14, 25, 96, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform var(--trans-smooth);
+}
+
+.eligibility-check-item:hover {
+  transform: translateX(6px);
+  background: rgba(20, 35, 120, 0.75);
+}
+
+.check-circle-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: var(--linar-coral);
+  color: var(--linar-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.btn-consultant-outline {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--linar-white) !important;
+  border: 2px solid var(--linar-white);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all var(--trans-smooth);
+}
+
+.btn-consultant-outline:hover {
+  background: var(--linar-white);
+  color: var(--linar-navy) !important;
+  transform: translateY(-2px);
+}
+
+/* Eligibility Visual Frame */
+.eligibility-photo-frame {
+  width: 380px;
+  height: 380px;
+  max-width: 90vw;
+  max-height: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashed-orbit-ring-eligibility {
+  position: absolute;
+  width: 114%;
+  height: 114%;
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: rotateOrbit 70s linear infinite reverse;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eligibility-circle-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--linar-coral);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.eligibility-photo-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   8. RESOURCES SECTION (.resources-section) — Screenshot 6
+   -------------------------------------------------------------------------- */
+.resources-section {
+  padding: 130px 0;
+  background: var(--linar-navy);
+}
+
+.resource-article-card {
+  background: rgba(14, 25, 96, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--trans-smooth);
+  cursor: pointer;
+}
+
+.resource-article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.article-thumb-wrapper {
+  height: 180px;
+  overflow: hidden;
+}
+
+.article-thumb {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.resource-article-card:hover .article-thumb {
+  transform: scale(1.08);
+}
+
+.article-card-title {
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.article-snippet {
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   9. VALUES SECTION (.values-section)
+   -------------------------------------------------------------------------- */
+.values-section {
+  padding: 100px 0;
+  background: var(--linar-navy-dark);
+}
+
+.value-feature-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform var(--trans-smooth);
+}
+
+.value-feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.text-coral {
+  color: var(--linar-coral) !important;
+}
+
+.cta-banner-card {
+  background: linear-gradient(135deg, #1A2890 0%, #080E4B 60%, #E84E1B 120%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   10. FOOTER (.linar-footer) — Screenshot 7
+   -------------------------------------------------------------------------- */
+.linar-footer {
+  background: #050A36;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 90px 0 35px;
+}
+
+.footer-tagline {
+  font-size: 1.05rem;
+  color: var(--linar-text-muted);
+}
+
+.footer-social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--linar-white);
+  font-size: 1.25rem;
+  transition: all var(--trans-fast);
+}
+
+.footer-social-btn:hover {
+  background: var(--linar-coral);
+  border-color: var(--linar-coral);
+  color: var(--linar-white);
+  transform: translateY(-3px);
+}
+
+.footer-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: var(--linar-white);
+}
+
+.footer-nav-list li {
+  margin-bottom: 12px;
+}
+
+.footer-nav-list a {
+  color: var(--linar-text-muted);
+  font-size: 1rem;
+  transition: color var(--trans-fast);
+}
+
+.footer-nav-list a:hover {
+  color: var(--linar-orange);
+  padding-left: 4px;
+}
+
+/* Footer Contact Cards */
+.footer-contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background var(--trans-fast);
+}
+
+.footer-contact-card:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.footer-icon-badge {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  background: var(--linar-coral);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--linar-white);
+  font-size: 1.2rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.contact-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--linar-white);
+}
+
+/* Scroll To Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--linar-coral);
+  color: var(--linar-white);
+  border: none;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 25px rgba(232, 78, 27, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--trans-smooth);
+  z-index: 1040;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--linar-orange);
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   11. CINEMATIC SCROLL REVEAL ANIMATIONS
+   -------------------------------------------------------------------------- */
+[data-scroll="reveal"] {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.75s var(--ease-cinematic), transform 0.75s var(--ease-cinematic);
+}
+
+[data-scroll="reveal"].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-scroll="reveal-left"] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.75s var(--ease-cinematic), transform 0.75s var(--ease-cinematic);
+}
+
+[data-scroll="reveal-left"].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-scroll="reveal-right"] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.75s var(--ease-cinematic), transform 0.75s var(--ease-cinematic);
+}
+
+[data-scroll="reveal-right"].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Flash notifications */
+.flash-container {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1060;
+  width: auto;
+  max-width: 90%;
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .linar-navbar {
+    border-radius: 35px;
+    padding: 10px 18px;
+  }
+
+  .hero-organic-coral-shape {
+    width: 90%;
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-floating-glass-card {
+    left: 0;
+    bottom: -15px;
+    max-width: 90%;
+  }
+
+  .section-main-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .btn-hero-white,
+  .btn-hero-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-visual-frame {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   13. QUOTE & CONTACT FORM PAGES
+   -------------------------------------------------------------------------- */
+.quote-section,
+.contact-section {
+  padding-top: 80px;
+  background: var(--linar-navy);
+}
+
+.quote-info-panel {
+  background: linear-gradient(135deg, #0A1172 0%, #15248A 100%);
+}
+
+.text-dark-navy {
+  color: #0A1172 !important;
+}
+
+.quote-input {
+  border: 1.5px solid #d3dcf7;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  transition: all var(--trans-fast);
+}
+
+.quote-input:focus {
+  border-color: var(--linar-royal-blue);
+  box-shadow: 0 0 0 3px rgba(30, 58, 232, 0.15);
+}
+
+.btn-coral {
+  background: var(--linar-coral);
+  border: none;
+  transition: all var(--trans-fast);
+}
+
+.btn-coral:hover {
+  background: var(--linar-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(232, 78, 27, 0.4);
+}
+
+.footer-contact-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--linar-coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--linar-white);
+  font-size: 0.9rem;
+}

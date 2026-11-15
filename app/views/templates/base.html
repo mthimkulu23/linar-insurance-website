@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Linar Insurance – The heart of insurance in South Africa. Inclusive, compassionate, trustworthy." />
+  <title>{% block title %}Linar Insurance – The Future of Insurance{% endblock %}</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <!-- ===== FLOATING GLASSMORPHISM NAVBAR ===== -->
+  <header class="linar-navbar-wrapper fixed-top">
+    <div class="container d-flex justify-content-center">
+      <nav class="linar-navbar d-flex align-items-center justify-content-between">
+        
+        <!-- Brand / Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+          <!-- Stylized Double Infinity / Intersecting Loops -->
+          <svg class="linar-logo-svg" width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Linar logo">
+            <ellipse cx="12" cy="12" rx="9" ry="9" stroke="#3B82F6" stroke-width="3.5" fill="none"/>
+            <ellipse cx="26" cy="12" rx="9" ry="9" stroke="#E84E1B" stroke-width="3.5" fill="none"/>
+          </svg>
+          <span class="logo-text">LINAR</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="nav-links d-none d-lg-flex align-items-center gap-4">
+          <a class="linar-nav-link" href="/#products">Products</a>
+          <a class="linar-nav-link" href="/#the-linar-difference">The Linar Difference</a>
+          <a class="linar-nav-link" href="/#eligibility">Eligibility</a>
+          <a class="linar-nav-link" href="/#resources">Resources</a>
+          <a class="linar-nav-link" href="/#values">Values</a>
+        </div>
+
+        <!-- CTA Action Button -->
+        <div class="d-none d-sm-block">
+          <a href="/get-a-quote" class="btn-quote-pill">
+            Get A Quote <i class="bi bi-calendar4-week ms-1"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler-btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list text-white fs-3"></i>
+        </button>
+
+      </nav>
+    </div>
+
+    <!-- Mobile Collapsible Menu -->
+    <div class="collapse d-lg-none" id="mobileMenu">
+      <div class="container pt-2">
+        <div class="mobile-menu-card p-3 rounded-4 shadow-lg">
+          <a class="mobile-nav-link" href="/#products">Products</a>
+          <a class="mobile-nav-link" href="/#the-linar-difference">The Linar Difference</a>
+          <a class="mobile-nav-link" href="/#eligibility">Eligibility</a>
+          <a class="mobile-nav-link" href="/#resources">Resources</a>
+          <a class="mobile-nav-link" href="/#values">Values</a>
+          <div class="pt-2">
+            <a href="/get-a-quote" class="btn-quote-pill w-100 text-center justify-content-center">
+              Get A Quote <i class="bi bi-calendar4-week ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== FLASH NOTIFICATIONS ===== -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container container">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'success' if category == 'success' else 'info' }} alert-dismissible fade show rounded-pill px-4 shadow" role="alert">
+            <i class="bi bi-check-circle-fill me-2 text-coral"></i> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="linar-footer">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        
+        <!-- Column 1: Brand & Socials -->
+        <div class="col-lg-3 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <svg class="linar-logo-svg" width="34" height="22" viewBox="0 0 38 24" fill="none">
+              <ellipse cx="12" cy="12" rx="9" ry="9" stroke="#3B82F6" stroke-width="3.5" fill="none"/>
+              <ellipse cx="26" cy="12" rx="9" ry="9" stroke="#E84E1B" stroke-width="3.5" fill="none"/>
+            </svg>
+            <span class="fs-4 fw-800 text-white tracking-wide">LINAR</span>
+          </div>
+          <p class="text-white-75 mb-4 footer-tagline">
+            The heart of insurance in South Africa
+          </p>
+          <div class="footer-social-icons d-flex gap-2">
+            <a href="https://wa.me/" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="list-unstyled footer-nav-list">
+            <li><a href="/#products">Products</a></li>
+            <li><a href="/#the-linar-difference">The Linar Difference</a></li>
+            <li><a href="/#eligibility">Eligibility</a></li>
+            <li><a href="/#resources">Resources</a></li>
+            <li><a href="/#values">Values</a></li>
+            <li><a href="/get-a-quote">Get A Quote</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact Us Cards -->
+        <div class="col-lg-5 col-md-12">
+          <h5 class="footer-heading">Contact Us</h5>
+          <div class="footer-contact-grid">
+            
+            <!-- Email -->
+            <div class="footer-contact-card">
+              <div class="footer-icon-badge">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="contact-info">
+                <span class="contact-label">Email</span>
+                <a href="mailto:Insurance@linar.co.za" class="contact-val">Insurance@linar.co.za</a>
+              </div>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="footer-contact-card">
+              <div class="footer-icon-badge">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="contact-info">
+                <span class="contact-label">Contact Number</span>
+                <a href="tel:0105413333" class="contact-val">010 541 3333</a>
+              </div>
+            </div>
+
+            <!-- Office Hours -->
+            <div class="footer-contact-card">
+              <div class="footer-icon-badge">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div class="contact-info">
+                <span class="contact-label">Office Hours</span>
+                <span class="contact-val">8:30 - 17:00 Mon - Fri</span>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="footer-contact-card">
+              <div class="footer-icon-badge">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div class="contact-info">
+                <span class="contact-label">Address</span>
+                <span class="contact-val">155 West Street, Sandown, Sandton, 2031</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom mt-5 pt-3 d-flex flex-wrap justify-content-between align-items-center text-white-50 small">
+        <p class="mb-0">&copy; {{ 2026 }} Linar Insurance. All rights reserved. Authorised Financial Services Provider.</p>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+          <a href="#" class="text-white-50 text-decoration-none">FAIS Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll To Top Button -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Cinematic JS -->
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>
