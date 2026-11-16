@@ -30,13 +30,8 @@
       <nav class="linar-navbar d-flex align-items-center justify-content-between">
         
         <!-- Brand / Logo -->
-        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-          <!-- Stylized Double Infinity / Intersecting Loops -->
-          <svg class="linar-logo-svg" width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Linar logo">
-            <ellipse cx="12" cy="12" rx="9" ry="9" stroke="#3B82F6" stroke-width="3.5" fill="none"/>
-            <ellipse cx="26" cy="12" rx="9" ry="9" stroke="#E84E1B" stroke-width="3.5" fill="none"/>
-          </svg>
-          <span class="logo-text">LINAR</span>
+        <a class="navbar-brand d-flex align-items-center" href="/">
+          <img src="{{ url_for('static', filename='images/linar-logo-white.png') }}" alt="Linar" height="34" class="linar-logo-img" style="max-height: 34px; width: auto;" />
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -108,12 +103,8 @@
         
         <!-- Column 1: Brand & Socials -->
         <div class="col-lg-3 col-md-6">
-          <div class="d-flex align-items-center gap-2 mb-3">
-            <svg class="linar-logo-svg" width="34" height="22" viewBox="0 0 38 24" fill="none">
-              <ellipse cx="12" cy="12" rx="9" ry="9" stroke="#3B82F6" stroke-width="3.5" fill="none"/>
-              <ellipse cx="26" cy="12" rx="9" ry="9" stroke="#E84E1B" stroke-width="3.5" fill="none"/>
-            </svg>
-            <span class="fs-4 fw-800 text-white tracking-wide">LINAR</span>
+          <div class="d-flex align-items-center mb-3">
+            <img src="{{ url_for('static', filename='images/linar-logo-white.png') }}" alt="Linar" height="38" class="linar-logo-img" style="max-height: 38px; width: auto;" />
           </div>
           <p class="text-white-75 mb-4 footer-tagline">
             The heart of insurance in South Africa

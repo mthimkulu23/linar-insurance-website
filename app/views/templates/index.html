@@ -153,6 +153,13 @@ nav {
   width: max(38px, calc(52*var(--u)));
   height: auto;
 }
+.brand img.linar-brand-img {
+  height: max(32px, calc(40*var(--u)));
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
+}
 .brand b {
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -674,6 +681,12 @@ ul.pl span {
   margin-bottom: calc(16*var(--u));
 }
 .footer-brand svg { width: max(38px, calc(52*var(--u))); height: auto; }
+.footer-brand img.linar-footer-img {
+  height: max(36px, calc(46*var(--u)));
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 .footer-brand b { font-weight: 800; font-size: max(20px, calc(28*var(--u))); }
 .footer-motto {
   font-size: max(14px, calc(17*var(--u)));
@@ -1042,16 +1055,7 @@ input[type="range"]::-webkit-slider-thumb {
 <!-- Top Floating Frosted-Glass Navbar (Screenshot 1 & Eligibility Screenshot) -->
 <nav>
   <a class="brand" href="#hero">
-    <svg viewBox="0 0 50 34" aria-hidden="true">
-      <defs>
-        <linearGradient id="lgx" x1="0" x2="1">
-          <stop offset="0" stop-color="#4f6bff"/>
-          <stop offset="1" stop-color="#f25c3b"/>
-        </linearGradient>
-      </defs>
-      <path d="M6 10c6-8 14-4 19 5s12 11 18 3c3-4-1-10-7-8M44 24c-6 8-14 4-19-5S13 8 7 16c-3 4 1 10 7 8" fill="none" stroke="url(#lgx)" stroke-width="5.5" stroke-linecap="round"/>
-    </svg>
-    <b>LINAR</b>
+    <img src="{{ url_for('static', filename='images/linar-logo-white.png') }}" alt="Linar" class="linar-brand-img" />
   </a>
 
   <ul>
@@ -1305,16 +1309,7 @@ input[type="range"]::-webkit-slider-thumb {
   <div class="footer-container">
     <div class="footer-col brand-col">
       <div class="footer-brand">
-        <svg viewBox="0 0 50 34" aria-hidden="true">
-          <defs>
-            <linearGradient id="lgx-f" x1="0" x2="1">
-              <stop offset="0" stop-color="#4f6bff"/>
-              <stop offset="1" stop-color="#f25c3b"/>
-            </linearGradient>
-          </defs>
-          <path d="M6 10c6-8 14-4 19 5s12 11 18 3c3-4-1-10-7-8M44 24c-6 8-14 4-19-5S13 8 7 16c-3 4 1 10 7 8" fill="none" stroke="url(#lgx-f)" stroke-width="5.5" stroke-linecap="round"/>
-        </svg>
-        <b>LINAR</b>
+        <img src="{{ url_for('static', filename='images/linar-logo-white.png') }}" alt="Linar" class="linar-footer-img" />
       </div>
       <p class="footer-motto">The heart of insurance in South Africa</p>
       <div class="footer-social-row">
